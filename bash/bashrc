@@ -1,0 +1,26 @@
+#!/bin/bash -x
+
+
+function _source_if_present {
+    [ -f "$1" ] && . "$1"
+}
+
+
+if [ -e "$HOME/.bashrcdir" ]; then
+    local_rc_dir="$(cat "$HOME/.bashrcdir")"
+else
+    local_rc_dir="$HOME/config/bash"
+fi
+
+
+_hostname="$(hostname)"
+# Take only the first part of the domain name
+_hostname="${_hostname%%.*}"
+
+
+_source_if_present "$local_rc_dir/bash_profile.generic.aliases"
+_source_if_present "$local_rc_dir/bash_profile.generic.exports"
+_source_if_present "$local_rc_dir/bash_profile.$_hostname"
+_source_if_present "$local_rc_dir/bashrc.generic.aliases"
+_source_if_present "$local_rc_dir/bashrc.generic.exports"
+_source_if_present "$local_rc_dir/bashrc.$_hostname"

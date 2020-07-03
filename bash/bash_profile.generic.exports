@@ -1,0 +1,7 @@
+#!/bin/bash -x
+
+export EDITOR='vim'
+export TERM=xterm-256color
+export BROWSER="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --new-window"
+
+export PATH="$HOME/bin:$PATH:."

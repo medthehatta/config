@@ -1,0 +1,419 @@
+"Vundle
+set nocompatible
+set runtimepath+=~/.vim/bundle/Vundle.vim/
+
+let laptop = "puffin"
+let hostname = system("hostname")
+let is_dark = system("readlink -f /home/med/.Xdefaults") =~ "dark"
+
+if is_dark
+    colorscheme elflord
+    autocmd VimEnter,Colorscheme * highlight ColorColumn ctermbg=236
+else
+    colorscheme default
+    autocmd VimEnter,Colorscheme * highlight ColorColumn ctermbg=255
+endif
+
+let g:ctrlp_map = '<C-~>'
+
+call vundle#begin()
+Plugin 'Shougo/neobundle.vim'
+Plugin 'terryma/vim-expand-region.git'
+Plugin 'kana/vim-fakeclip.git'
+"Plugin 'bling/vim-airline.git'
+"Plugin 'vim-airline/vim-airline-themes.git'
+Plugin 'MarcWeber/vim-addon-mw-utils.git'
+Plugin 'vim-scripts/taglist.vim.git'
+Plugin 'honza/vim-snippets.git'
+Plugin 'tpope/vim-repeat.git'
+Plugin 'tomtom/tlib_vim.git'
+Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-sleuth'
+Plugin 'mbbill/undotree.git'
+Plugin 'kien/ctrlp.vim.git'
+"Plugin 'garbas/vim-snipmate.git'
+Plugin 'dkprice/vim-easygrep'
+"Plugin 'davidhalter/jedi-vim'
+"Plugin 'jacquesbh/vim-showmarks.git'
+"Plugin 'tpope/vim-surround.git'
+Plugin 'wesQ3/vim-windowswap'
+Plugin 'Yggdroot/vim-mark'
+Plugin 'tpope/vim-vinegar'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'tpope/vim-obsession'
+Plugin 'vim-scripts/paredit.vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'ElmCast/elm-vim'
+Plugin 'alx741/vim-hindent'
+Plugin 'mhinz/vim-signify'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'chrisbra/Colorizer'
+if hostname =~ laptop
+    Plugin 'nathanaelkane/vim-indent-guides.git'
+    Plugin 'SirVer/ultisnips'
+endif
+"Plugin 'python/black'
+Plugin 'mattn/emmet-vim'
+call vundle#end()
+
+filetype plugin indent on
+
+let g:airline_theme = 'papercolor'
+
+" Preferences
+set autoindent          " when making a new line, start at the current indent level
+set copyindent          " copy the previous indentation level (doesn't this already happen?)
+set autoread            " automatically reread a file if it was changed outside of vim
+set cmdheight=2         " by making the output line taller, you don't have to 'Enter to Continue' as often
+set expandtab           " turn tabs into spaces
+set tabstop=4           " 4 spaces per tab
+set shiftwidth=4        " 4 spaces per tab
+set smarttab            " leading tabs use shiftwidth instead of tabstop
+set hidden              " allow changing buffers without saving
+"set hlsearch            " start with search highlighting on
+set ignorecase          " do case-insensitive search, but see 'set smartcase'
+set incsearch           " search incrementally
+set mouse=a             " allow use of the mouse in cli mode
+set nobackup            " don't save backup files
+set number              " turn line numbering on
+set noshowmode          " do not show the mode, since airline does this already
+"set relativenumber      " turn line numbering on
+set ruler               " show the row and column in the statusbar
+set showcmd             " like cmdheight, makes 'Enter to Continue' messages less frequent
+set showmatch           " when a bracket is inserted, briefly flash the one it matches
+set showmode            " in the status line, show the mode we're in
+set smartcase           " when searching, only do case-sensitive searches if there's a capital letter
+set wildmode=list:longest,full          " how to display completion lists
+set gdefault            " when replacing, assume global replacement
+set wrap                " wrap words...
+set linebreak           " ...so that lines only break at 'breakable' characters
+set backspace=2         " fix backspace
+set ssop-=options       " don't store global and local values in a session
+set splitbelow          " split so that non-split window ends at current line
+if hostname =~ laptop 
+    set undofile            " use an undo file to track changes made in vim
+    set undolevels=500      " save last 500 undos
+    set undodir=$HOME/.vim/undo
+endif
+" dont want modelines
+set modelines=0
+set nomodeline
+
+" statusline
+set statusline=
+set statusline+=%F\ 
+set statusline+=[%{strlen(&fenc)?&fenc:'none'}, 
+set statusline+=%{&ff}]\ 
+set statusline+=%m\ 
+set statusline+=%r\ 
+set statusline+=%y\ 
+set statusline+=%=
+set statusline+=%c,
+set statusline+=%l/%L\ 
+set statusline+=\ %p%%
+set laststatus=2
+
+" indent guides
+if hostname =~ laptop
+    let g:indent_guides_start_level=1
+    let g:indent_guides_guide_size=1
+    let g:indent_guides_auto_colors=0
+    if is_dark
+        au Colorscheme * highlight IndentGuidesEven ctermbg=239
+        au Colorscheme * highlight IndentGuidesOdd ctermbg=239
+    else
+        au Colorscheme * highlight IndentGuidesEven ctermbg=255
+        au Colorscheme * highlight IndentGuidesOdd ctermbg=255
+    endif
+    let g:indent_guides_enable_on_vim_startup=1
+endif
+
+" yaml has a shiftwidth of 2, not 4
+autocmd BufRead,BufNewFile *.yml set tabstop=2
+autocmd BufRead,BufNewFile *.yml set shiftwidth=2
+autocmd BufRead,BufNewFile *.twik set syntax=yml
+
+" twiki markup setup
+autocmd BufRead,BufNewFile *.twik set tabstop=3
+autocmd BufRead,BufNewFile *.twik set shiftwidth=3
+autocmd BufRead,BufNewFile *.twik set syntax=twiki
+
+" elm
+autocmd BufRead,BufNewFile *.elm set tabstop=4
+autocmd BufRead,BufNewFile *.elm set shiftwidth=4
+autocmd BufRead,BufNewFile *.elm set syntax=elm
+let g:elm_format_autosave = 1
+
+" haskell
+autocmd BufRead,BufNewfile *.hs set tabstop=4
+autocmd BufRead,BufNewfile *.hs set shiftwidth=4
+autocmd BufRead,BufNewfile *.hs set syntax=haskell
+let g:hindent_on_save = 0
+
+" .t files are perl tests
+autocmd BufRead,BufNewFile *.t set filetype=perl
+autocmd BufRead,BufNewFile *.t set tabstop=4
+autocmd BufRead,BufNewFile *.t set shiftwidth=4
+autocmd BufRead,BufNewFile *.t set syntax=perl
+
+" Perl filetype randomly started misbehaving
+autocmd BufRead,BufNewFile *.pl,*.pm set filetype=perl
+autocmd BufRead,BufNewFile *.pl,*.pm set tabstop=4
+autocmd BufRead,BufNewFile *.pl,*.pm set shiftwidth=4
+autocmd BufRead,BufNewFile *.pl,*.pm set syntax=perl
+
+" Kotlin
+autocmd BufRead,BufNewFile *.kt,*.kts set filetype=kotlin
+autocmd BufRead,BufNewFile *.kt,*.kts set tabstop=4
+autocmd BufRead,BufNewFile *.kt,*.kts set shiftwidth=4
+autocmd BufRead,BufNewFile *.kt,*.kts set syntax=kotlin
+
+
+" toggle search highlighting
+let hlstate=0
+nnoremap <C-@> :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate<cr>
+
+" space leader
+let mapleader="\<space>"
+
+" save your fingers
+map <leader> <Plug>(easymotion-prefix)
+map <leader>s <Plug>(easymotion-s2)
+
+" quit
+nnoremap <leader>q :q!<cr>
+nnoremap <leader>x :x<cr>
+
+" change command leader to semicolon
+noremap ; :
+
+" still use the semicolon functionality, but not the comma
+noremap , ;
+
+" enter visual line mode
+"nmap <leader><leader> V
+"vmap <leader><leader> <esc>
+
+" open file
+nnoremap <leader>o :CtrlP<CR>
+" write
+nnoremap <leader>i :w<CR>
+
+" top quickly
+nnoremap <BS> gg
+vnoremap <BS> gg
+
+" select text just pasted
+nnoremap gV `[v`]
+
+" clipboard
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
+" 
+
+" window-based movement, not line-based
+nnoremap j gj
+nnoremap k gk
+
+" incrementally expand selection
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
+" open a line below
+nnoremap K o<esc>
+
+" in ReST, 'underline' the section
+nnoremap gs yypVr
+
+" quick way to leave insert mode
+inoremap kj <esc>
+inoremap jk <esc>
+" or visual mode
+" FIXME makes line-highlighting lag while it waits for a possible j or k!
+"vnoremap kj <esc>
+"vnoremap jk <esc>
+
+" indentation matching
+"source ~/.vim/vim_indentation
+
+" i use C-r as my screen escape, so avoid it
+inoremap <C-e> <C-r>                    
+
+" Syntax highlighting and filetype-specific goodness
+filetype plugin on      
+syntax on       
+
+" Automatically change into the file's local directory (but leave it on quit)
+autocmd BufEnter * silent! lcd %:p:h "change into 
+
+" Allow saving of files with sudo when I forgot to sudo vim
+cnoremap w!! %!sudo tee > /dev/null %
+
+" scons SConstruct files are literally python
+autocmd BufRead,BufNewFile SConstruct set filetype=python
+" Arduino files are essentially C++
+autocmd BufRead,BufNewFile *.ino set filetype=cpp
+
+" undotree
+noremap <f4> :UndotreeToggle<cr>
+
+"noremap <leader>d :r!date -Im<cr>
+"noremap <leader>D :r!date -Im<cr>o
+
+" ctrlp map
+let g:ctrlp_working_path_mode = 'ra'
+
+" special repeat
+silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
+
+" showmarks
+" off by default
+" noremap <f3> :DoShowMarks<cr>
+" noremap <f2> :NoShowMarks<cr>
+
+" taglist
+noremap <f3> :TlistToggle<cr>
+let Tlist_WinWidth = 50
+
+" Perl stuff
+autocmd FileType perl set iskeyword+=:
+
+" vim-windowswap adds the worst keybindings
+let g:windowswap_map_keys = 0 " turn off the defaults
+nnoremap <silent> <leader>gw :call WindowSwap#EasyWindowSwap()<CR>
+
+
+
+noremap <leader>l <C-w>l
+noremap <leader>h <C-w>h
+noremap <leader>u <C-w>v
+noremap <leader>c <C-w>c
+
+" Open the current window in a new tab (kinda like zooming in tmux)
+noremap <leader>z :tabnew %<cr>
+
+
+" highlight 80 character width
+if hostname =~ laptop
+    if is_dark
+        highlight ColorColumn ctermbg=0
+    else
+        highlight ColorColumn ctermbg=255
+    endif
+    let &colorcolumn=join(range(81,999),",")
+endif
+
+
+" shortcut for making something executable
+nnoremap <leader><leader>e :!chmod +x %<cr><cr>
+
+" turn off the toggle mapping
+if hostname =~ laptop
+    let g:indent_guides_default_mapping = 0
+endif
+
+" vimdiff colors need to be way simpler than regular vim colors
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+
+
+
+nnoremap <leader>gf T vt y:e `qa "`<cr>
+nnoremap <C-w><leader>gf T vt y:split `qa "`<cr>
+
+noremap <leader>v :source ~/.vimrc<cr>
+
+
+" syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_python_checkers = ['flake8', 'pylint', 'pydocstyle']
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_cursor_column = 1
+let g:syntastic_cs_checkers = ['code_checker']
+
+
+" Cursor line
+au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+au WinLeave * setlocal nocursorline
+set cursorline
+if is_dark
+    au VimEnter,Colorscheme * highlight CursorLine term=NONE cterm=NONE ctermbg=1
+else
+    au VimEnter,Colorscheme * highlight CursorLine term=NONE cterm=NONE ctermbg=229
+endif
+highlight CursorColumn term=reverse
+
+
+" command to fold everything except what you searched for
+command! -nargs=* Foldsearch
+      \ if <q-args> != '' |
+      \   exe "normal /".<q-args>."\<CR>" |
+      \ endif |
+      \ if @/ != '' |
+      \   setlocal
+      \     foldexpr=FoldRegex(v:lnum,@/,2)
+      \     foldmethod=expr
+      \     foldlevel=0 |
+      \ endif
+ 
+function! FoldRegex(lnum,pat,context)
+    " get start/end positions for context lines
+    let startline=a:lnum-a:context while startline < 1 let startline+=1 endwhile
+    let endline=a:lnum+a:context while endline > line('$') let endline-=1
+    endwhile
+   
+    let returnval = 2
+   
+    let pos=getpos('.')
+   
+    " search from current line to get matches ON the line
+    call cursor(a:lnum, 1) let matchline=search(a:pat,'cW',endline) if
+    matchline==a:lnum let returnval = 0 elseif matchline > 0
+        " if current line didn't match, there could have been a match within
+        " trailing context lines
+        let returnval = 1 else
+        " if no match at current line, search leading context lines for a match
+        call cursor(startline, 1) let matchline=search(a:pat,'cW',a:lnum) if
+        matchline > 0 let returnval = 1 endif endif
+   
+    call setpos('.',pos)
+   
+    return returnval
+endfun
+
+" git gutter
+let g:gitgutter_terminal_reports_focus = 0
+let g:gitgutter_override_sign_column_highlight = 0
+
+highlight SignColumn ctermbg=255
+highlight GitGutterAddDefault cterm=bold ctermfg=15 ctermbg=2
+highlight GitGutterChangeDefault cterm=bold ctermfg=0 ctermbg=14
+highlight GitGutterDeleteDefault cterm=bold ctermfg=15 ctermbg=2
+
+nnoremap <leader>, :s/, /,\r    /<cr>
+
+" omnisharp
+let g:OmniSharp_server_use_mono = 1
+
+" YouCompleteMe
+let g:ycm_key_invoke_completion = '<C-/>'
+
+" Pages up/down with right hand:
+
+" up
+" C-u
+
+" down
+nnoremap <C-j> <C-d>

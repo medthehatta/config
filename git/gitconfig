@@ -1,0 +1,69 @@
+[user]
+  name = Med Mahmoud
+  email = mmahmoud@riverbed.com
+[core]
+  editor = vim
+  filemode = false
+  pager = less -R
+
+[merge]
+  conflictstyle = diff3
+[mergetool "myvimdiff"]
+  cmd = cp -f \"$REMOTE\" \"$MERGED\" && vimdiff -c \"source ~/.vimdiffcolors\" \"$LOCAL\" \"$MERGED\"
+[mergetool "diffuse"]
+  cmd = /home/med/bin/diffusemerge \"$LOCAL\" \"$BASE\" \"$REMOTE\" \"$MERGED\"
+
+[diff]
+  tool = diffuse
+  noprefix = true
+[difftool "diffuse"]
+  cmd = /home/med/scripts/diffusemerge \"$LOCAL\" \"$BASE\" \"$REMOTE\" \"$MERGED\"
+
+[alias]
+  sh = show
+  st = status -s
+  ci = commit
+  cm = commit -m
+  ca = commit -a
+  cam = commit -a -m
+  caM = commit -a -m
+  camend = commit -a --amend
+  co = checkout
+  cb = checkout -b
+  cnt = checkout -no-track
+  br = branch
+  brm = branch --merged
+  b = rev-parse --abbrev-ref HEAD
+  df = diff
+  dn = diff --name-only
+  dnd = diff --name-only --diff-filter=D
+  dnm = diff --name-only --diff-filter=M
+  ds = diff --stat
+  du = diff --no-color --no-prefix --full-index
+  ll = log --first-parent --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar)%Creset %Cblue(%an)%Creset' --abbrev-commit --date=relative
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar)%Creset %Cblue(%an)%Creset' --abbrev-commit --date=relative
+  lm = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar)%Creset %Cblue(%an)%Creset' --abbrev-commit --date=relative master^..
+  l = log -n12 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar)%Creset %Cblue(%an)%Creset' --abbrev-commit --date=relative
+  mb = merge-base HEAD master
+  re = for-each-ref --sort=-committerdate --count 10 refs/heads/*
+
+  pu = push
+  fe = fetch
+
+[color]
+  ui = always
+[color "branch"]
+  current = green bold
+  local = yellow
+  remote = red
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow bold
+  changed = green bold
+  untracked = red
+[push]
+  default = simple

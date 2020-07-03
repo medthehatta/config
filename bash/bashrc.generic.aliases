@@ -1,0 +1,13 @@
+#!/bin/bash -x
+
+alias less="less -R"
+alias ls="ls -N --color=auto --sort=time"
+alias ll="ls -lrt"
+alias grep="grep -P"
+alias head="head -n20"
+alias cls="clear && echo -n "@" && pwd && ls"
+alias x="exit"
+alias ..="cd .."
+alias ...="cd ../.."
+alias g="git"
+alias sshh="ssh -oPubkeyAuthentication=no -oStrictHostKeyChecking=no -oUserKnownHostsFile=/dev/null"
