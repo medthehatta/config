@@ -12,3 +12,6 @@ export PATH="/usr/local/opt/tmux/libexec/gnubin:$PATH"
 
 # Trailing slash to linked dirs
 bind 'set mark-symlinked-directories on'
+
+# Chrome is the browser
+export BROWSER="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --new-window"
