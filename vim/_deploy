@@ -1,0 +1,8 @@
+#!/bin/bash -x
+prefix="$(dirname -- "$(readlink -f -- "$0")")"
+
+mkdir "$HOME/.vim"
+ln -sf "$prefix/autoload" "$HOME/.vim/autoload"
+ln -sf "$prefix/vimrc" "$HOME/.vimrc"
+mkdir -p "$HOME/.vim/bundle"
+(cd "$HOME/.vim/bundle" && git clone https://github.com/VundleVim/Vundle.vim.git)

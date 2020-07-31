@@ -1,0 +1,8 @@
+#!/bin/bash
+prefix="$(dirname -- "$(readlink -f -- "$0")")"
+
+cd "$prefix"
+for deployer in $(find . -maxdepth 2 -mindepth 2 -type f -executable -name '_deploy'); do
+    bash -x "$deployer"
+done
+

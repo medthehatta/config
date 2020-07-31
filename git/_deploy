@@ -1,0 +1,4 @@
+#!/bin/bash -x
+prefix="$(dirname -- "$(readlink -f -- "$0")")"
+
+ln -sf "$prefix/gitconfig" "$HOME/.gitconfig"
