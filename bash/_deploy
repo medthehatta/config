@@ -1,0 +1,7 @@
+#!/bin/bash
+prefix="$(dirname -- "$(readlink -f -- "$0")")"
+
+
+ln -sf "$prefix/bashrc" "$HOME/.bashrc"
+ln -sf "$prefix/bashrc" "$HOME/.bash_profile"
+ln -sf "$prefix/plan" "$HOME/.plan"
