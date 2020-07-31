@@ -3,3 +3,12 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # gnu versions of command line tools
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/tree/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/tmux/libexec/gnubin:$PATH"
+
+# Completion
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+# Trailing slash to linked dirs
+bind 'set mark-symlinked-directories on'
