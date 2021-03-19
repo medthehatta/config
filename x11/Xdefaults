@@ -4,7 +4,7 @@ xterm*metaSendsEscape:  true
 xterm*saveLines:        20000
 xterm*scrollBar:        false
 xterm*termName: xterm
-xterm*faceName: drift:size=11
+xterm*faceName: liberation:size=11
 xterm.perl-ext-common:  default,matcher
 dzen2.font:     drift:size=9
 xterm*faceSize1:        5
