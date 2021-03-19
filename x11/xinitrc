@@ -1,5 +1,6 @@
 xsetroot -bg black
 xset -b
 . "$HOME/.bashrc"
+xrdb "$HOME/.Xdefaults"
 mkdir -p "$XDG_RUNTIME_DIR/wm"
 exec xmonad > "$XDG_RUNTIME_DIR/wm/dynamiclog"
