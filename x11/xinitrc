@@ -3,5 +3,6 @@ xset -b
 . "$HOME/.bashrc"
 xrdb "$HOME/.Xdefaults"
 mkdir -p "$XDG_RUNTIME_DIR/wm"
-[ -e "$HOME/deploy/statusbar/statusbar.sh" ] && "$HOME/deploy/statusbar/statusbar.sh" &
+[ -e "$HOME/deploy/statusbar/loop_statusbar.sh" ] && \
+    "$HOME/deploy/statusbar/loop_statusbar.sh" &
 exec xmonad > "$XDG_RUNTIME_DIR/wm/dynamiclog"
