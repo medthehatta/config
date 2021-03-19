@@ -128,7 +128,7 @@ myPP =
 myKeyMapping =
     [ 
     -- Terminal: Either scratchpad, persistent terminal, conf, wifi
-    , ("M-d", spawn myTerminal)
+    ("M-d", spawn myTerminal)
     , ("M-u", spawn "xterm -class float -geometry 200x10")
     , ("M-S-u", inTerm "vim ~/.xmonad/xmonad.hs") 
 
@@ -173,7 +173,7 @@ myKeyMapping =
     [ ("M-s C-" ++ num, spawn <| "~/scripts/clip-to " ++ num) | num <- oneToZero ] ++
 	[
     -- Prompts: Search, web browse, or edit 
-    , ("M-f", spawn myBrowser)
+    ("M-f", spawn myBrowser)
     , ("M-e e", AL.launchApp myXPConfig <| myTerminalEx "vim ")
 
     -- Window management
