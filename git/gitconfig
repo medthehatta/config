@@ -1,6 +1,6 @@
 [user]
   name = Med Mahmoud
-  email = mmahmoud@riverbed.com
+  email = medthehatta@gmail.com
 [core]
   editor = vim
   filemode = false
@@ -8,16 +8,6 @@
 
 [merge]
   conflictstyle = diff3
-[mergetool "myvimdiff"]
-  cmd = cp -f \"$REMOTE\" \"$MERGED\" && vimdiff -c \"source ~/.vimdiffcolors\" \"$LOCAL\" \"$MERGED\"
-[mergetool "diffuse"]
-  cmd = /home/med/bin/diffusemerge \"$LOCAL\" \"$BASE\" \"$REMOTE\" \"$MERGED\"
-
-[diff]
-  tool = diffuse
-  noprefix = true
-[difftool "diffuse"]
-  cmd = /home/med/scripts/diffusemerge \"$LOCAL\" \"$BASE\" \"$REMOTE\" \"$MERGED\"
 
 [alias]
   sh = show
