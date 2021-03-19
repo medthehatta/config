@@ -1,0 +1,10 @@
+#!/bin/bash
+prefix="$(dirname -- "$(readlink -f -- "$0")")"
+
+
+ln -sf "$prefix/Xdefaults" "$HOME/.Xdefaults"
+ln -sf "$prefix/xinitrc" "$HOME/.xinitrc"
+ln -sf "$prefix/xinitrc" "$HOME/.xsession"
+ln -sf "$prefix/xinitrc" "$HOME/.xprofile"
+mkdir -p "$HOME/.xmonad"
+ln -sf "$prefix/xmonad.hs" "$HOME/.xmonad/xmonad.hs"

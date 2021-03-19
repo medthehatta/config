@@ -1,0 +1,4 @@
+xsetroot -bg black
+xset -b
+mkdir -p "$XDG_RUNTIME_DIR/wm"
+exec xmonad > "$XDG_RUNTIME_DIR/wm/dynamiclog"
