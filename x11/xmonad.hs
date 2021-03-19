@@ -171,7 +171,7 @@ myKeyMapping =
     -- Process the clipboard through /tmp/c1 .. /tmp/c0
     [ ("M-s " ++ num, spawn <| "~/scripts/clip-from " ++ num) | num <- oneToZero ] ++
     [ ("M-s C-" ++ num, spawn <| "~/scripts/clip-to " ++ num) | num <- oneToZero ] ++
-	[
+    [
     -- Prompts: Search, web browse, or edit 
     ("M-f", spawn myBrowser)
     , ("M-e e", AL.launchApp myXPConfig <| myTerminalEx "vim ")
