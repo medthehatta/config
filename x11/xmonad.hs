@@ -56,7 +56,7 @@ x |> f = f x
 
 -- Set up the basic bits: modifier key, terminal
 myModMask = mod4Mask
-myTerminal = "xterm"
+myTerminal = "sakura"
 myBrowser = "google-chrome"
 
 
@@ -137,6 +137,8 @@ myKeyMapping =
     , ("M-S-f p", spawn <| myBrowser ++ " --app=$(xclip -o)")
     , ("M-p r", spawn "~/bin/remind_prompt")
     , ("M-p t", spawn "~/bin/toggle-scheme")
+    -- force-refresh the statusbar
+    , ("M-r", spawn "~/bin/stop_statusbar.sh")
 
     -- Edit a template, the clipboard, a temp file, ...
     , ("M-e t", inTerm "vim $(mktemp -t 'ff_XXX.txt')")
