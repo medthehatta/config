@@ -19,8 +19,8 @@ _hostname="${_hostname%%.*}"
 
 
 _source_if_present "$local_rc_dir/bash_profile.generic.aliases"
-_source_if_present "$local_rc_dir/bash_profile.generic.exports"
-_source_if_present "$local_rc_dir/bash_profile.$_hostname"
 _source_if_present "$local_rc_dir/bashrc.generic.aliases"
+_source_if_present "$local_rc_dir/bash_profile.generic.exports"
 _source_if_present "$local_rc_dir/bashrc.generic.exports"
+_source_if_present "$local_rc_dir/bash_profile.$_hostname"
 _source_if_present "$local_rc_dir/bashrc.$_hostname"
