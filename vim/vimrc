@@ -133,7 +133,13 @@ endif
 " yaml has a shiftwidth of 2, not 4
 autocmd BufRead,BufNewFile *.yml set tabstop=2
 autocmd BufRead,BufNewFile *.yml set shiftwidth=2
+autocmd BufRead,BufNewFile *.yaml set tabstop=2
+autocmd BufRead,BufNewFile *.yaml set shiftwidth=2
 autocmd BufRead,BufNewFile *.twik set syntax=yml
+
+" terraform tf files have shiftwidth 2, not 4
+autocmd BufRead,BufNewFile *.tf set tabstop=2
+autocmd BufRead,BufNewFile *.tf set shiftwidth=2
 
 " twiki markup setup
 autocmd BufRead,BufNewFile *.twik set tabstop=3
