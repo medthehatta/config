@@ -56,6 +56,7 @@ if hostname =~ laptop
 endif
 "Plugin 'python/black'
 Plugin 'mattn/emmet-vim'
+Plugin 'calviken/vim-gdscript3'
 call vundle#end()
 
 filetype plugin indent on
@@ -175,6 +176,13 @@ autocmd BufRead,BufNewFile *.kt,*.kts set filetype=kotlin
 autocmd BufRead,BufNewFile *.kt,*.kts set tabstop=4
 autocmd BufRead,BufNewFile *.kt,*.kts set shiftwidth=4
 autocmd BufRead,BufNewFile *.kt,*.kts set syntax=kotlin
+
+
+" GDScript
+autocmd BufRead,BufNewFile *.gd set filetype=gdscript3
+autocmd BufRead,BufNewFile *.gd set tabstop=4
+autocmd BufRead,BufNewFile *.gd set shiftwidth=4
+autocmd BufRead,BufNewFile *.gd set syntax=gdscript3
 
 
 " toggle search highlighting
