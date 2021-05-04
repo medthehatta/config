@@ -105,6 +105,7 @@ myManageHook =
         , className =? "rdesktop" --> doFloat
         , className =? "feh" --> doFloat
         , className =? "ROX-Filer" --> doFloat
+        , appName =? "Godot_Engine" --> doFloat
         , (stringProperty "WM_NAME" =? "Volume Control") --> doFloat
         , (stringProperty "WM_NAME" =? "Slack") --> (doShift "0")
         , (stringProperty "WM_NAME" =? "Zoom Cloud Meetings") --> (doShift "0")
