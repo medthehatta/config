@@ -177,6 +177,9 @@ autocmd BufRead,BufNewFile *.kt,*.kts set tabstop=4
 autocmd BufRead,BufNewFile *.kt,*.kts set shiftwidth=4
 autocmd BufRead,BufNewFile *.kt,*.kts set syntax=kotlin
 
+" Javascript (specifically the indent is wrong)
+autocmd BufRead,BufNewFile *.js set tabstop=2
+autocmd BufRead,BufNewFile *.js set shiftwidth=2
 
 " GDScript
 autocmd BufRead,BufNewFile *.gd set filetype=gdscript3
