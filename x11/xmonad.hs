@@ -143,8 +143,7 @@ myKeyMapping =
 
     -- Edit a template, the clipboard, a temp file, ...
     , ("M-e t", inTerm "vim $(mktemp -t 'ff_XXX.txt')")
-    , ("M-e S-t", inTerm "~/bin/check-todo")
-    , ("M-e C-t", inTerm "~/bin/add-todo")
+    , ("M-e S-t", spawn "~/bin/takenotes")
     , ("M-e p", inTerm "/bin/bash /home/med/bin/vimclip")
     , ("M-e S-p", inTerm "curlvimclip")
     , ("M-e S-e", inTerm "vim $(xclip -o)")
