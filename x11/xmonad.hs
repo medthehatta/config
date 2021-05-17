@@ -57,7 +57,7 @@ x |> f = f x
 -- Set up the basic bits: modifier key, terminal
 myModMask = mod4Mask
 myTerminal = "sakura"
-myBrowser = "firefox"
+myBrowser = "google-chrome"
 
 
 -- shortcut for constructing the command for opening a program in the terminal
