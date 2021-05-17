@@ -4,5 +4,5 @@ function _source_if_present {
 
 
 _source_if_present "$HOME/domino/config/.key-exports"
-export BROWSER="/usr/bin/firefox"
+export BROWSER="/usr/bin/google-chrome"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
