@@ -1,18 +1,19 @@
 AngleMethod: 4
 Mathhab: 2
+DST: 1
 
 
 City: Ashburn, VA
-Latitude: 39.04366764
-Longitude: -77.49778011
-UTC: -5
+Latitude: 39.0438
+Longitude: -77.4874
+UTC: -4
 
 #City: Kulpsville, PA
 #Latitude: 40.246854
 #Longitude: -75.334315
-#UTC: -5
+#UTC: -4
 
 #City: Sunnyvale, CA
 #Latitude: 37.397470
 #Longitude: -122.031829
-#UTC: -8
+#UTC: -7
