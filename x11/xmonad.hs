@@ -155,6 +155,7 @@ myKeyMapping =
     , ("M-e S-s", spawn "feh -. /tmp/hc.png")
     , ("M-e C-s", spawn "~/bin/drop-latest-img")
     , ("M-e .", spawn "~/bin/latest-img | xargs pinta")
+    , ("M-e v", inTerm "~/bin/screencap")
     ] ++
 
     [ ("M-e r r", spawn "~/scripts/do_trigger") ] ++
