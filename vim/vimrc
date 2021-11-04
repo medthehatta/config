@@ -57,6 +57,8 @@ endif
 "Plugin 'python/black'
 Plugin 'mattn/emmet-vim'
 Plugin 'calviken/vim-gdscript3'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'christoomey/vim-tmux-navigator'
 call vundle#end()
 
 filetype plugin indent on
