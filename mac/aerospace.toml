@@ -1,0 +1,71 @@
+# Reference: https://github.com/i3/i3/blob/next/etc/config
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# Mouse follows focus when focused monitor changes
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+[mode.main.binding]
+    # See: https://nikitabobko.github.io/AeroSpace/goodies#open-a-new-window-with-applescript
+    alt-enter = '''exec-and-forget osascript -e '
+    tell application "iTerm2"
+        create window with default profile
+    end tell'
+    '''
+
+    alt-m = 'workspace-back-and-forth'
+    alt-shift-n = 'focus-monitor --wrap-around next'
+    alt-shift-b = 'focus-monitor --wrap-around prev'
+
+    # i3 wraps focus by default
+    alt-j = 'focus --boundaries-action wrap-around-the-workspace dfs-prev'
+    alt-k = 'focus --boundaries-action wrap-around-the-workspace dfs-next'
+    alt-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left'
+    alt-l = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right'
+
+    alt-shift-h = 'move left --boundaries all-monitors-outer-frame'
+    alt-shift-j = 'move down --boundaries all-monitors-outer-frame'
+    alt-shift-k = 'move up --boundaries all-monitors-outer-frame'
+    alt-shift-l = 'move right --boundaries all-monitors-outer-frame'
+
+    alt-shift-f = 'fullscreen'
+    alt-shift-comma = 'layout tiles horizontal vertical'
+    alt-shift-period = 'layout accordion horizontal vertical'
+    alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
+
+    # Not supported, because this command is redundant in AeroSpace mental model.
+    # See: https://nikitabobko.github.io/AeroSpace/guide#floating-windows
+    #alt-space = 'focus toggle_tiling_floating'
+
+    # `focus parent`/`focus child` are not yet supported, and it's not clear whether they
+    # should be supported at all https://github.com/nikitabobko/AeroSpace/issues/5
+    # alt-a = 'focus parent'
+
+    alt-1 = 'summon-workspace 1'
+    alt-2 = 'summon-workspace 2'
+    alt-3 = 'summon-workspace 3'
+    alt-4 = 'summon-workspace 4'
+    alt-5 = 'summon-workspace 5'
+    alt-6 = 'summon-workspace 6'
+    alt-7 = 'summon-workspace 7'
+    alt-8 = 'summon-workspace 8'
+    alt-9 = 'summon-workspace 9'
+
+    alt-shift-c = 'reload-config'
+
+    alt-r = 'mode resize'
+
+    alt-t = 'exec-and-forget ~/deploy/scratch/aeroname select'
+    alt-shift-t = 'exec-and-forget ~/deploy/scratch/aeroname move-node'
+    alt-shift-r = 'exec-and-forget ~/deploy/scratch/aeroname move-all'
+
+    cmd-h = [] # Disable "hide application"
+
+[mode.resize.binding]
+    h = 'resize width -50'
+    j = 'resize height +50'
+    k = 'resize height -50'
+    l = 'resize width +50'
+    enter = 'mode main'
+    esc = 'mode main'

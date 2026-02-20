@@ -240,8 +240,6 @@ nmap <leader>y <Plug>OSCYankOperator
 nmap <leader>yy <leader>c_
 vmap <leader>y <Plug>OSCYankVisual
 
-" 
-
 " window-based movement, not line-based
 nnoremap j gj
 nnoremap k gk

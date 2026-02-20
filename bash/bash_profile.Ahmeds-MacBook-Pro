@@ -1,0 +1,4 @@
+alias ls="ls --color=auto"
+unalias grep
+export BASH_SILENCE_DEPRECATION_WARNING=1
+export PATH="$PATH:$HOME/.local/bin"
