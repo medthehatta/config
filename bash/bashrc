@@ -25,3 +25,5 @@ _source_if_present "$local_rc_dir/bashrc.generic.exports"
 _source_if_present "$local_rc_dir/bash_profile.$_hostname"
 _source_if_present "$local_rc_dir/bashrc.$_hostname"
 _source_if_present "$HOME/.key-exports"
+
+_source_if_present "$HOME/.local/bin/env"

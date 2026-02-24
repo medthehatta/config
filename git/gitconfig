@@ -57,3 +57,6 @@
   untracked = red
 [push]
   default = simple
+	autoSetupRemote = true
+[diff]
+  noprefix = true

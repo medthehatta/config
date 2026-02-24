@@ -59,6 +59,8 @@ Plugin 'mattn/emmet-vim'
 Plugin 'calviken/vim-gdscript3'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'ojroques/vim-oscyank'
+Plugin 'godlygeek/tabular'
 call vundle#end()
 
 filetype plugin indent on
@@ -228,12 +230,15 @@ vnoremap <BS> gg
 nnoremap gV `[v`]
 
 " clipboard
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
+" vmap <Leader>y "+y
+" vmap <Leader>d "+d
+" nmap <Leader>p "+p
+" nmap <Leader>P "+P
+" vmap <Leader>p "+p
+" vmap <Leader>P "+P
+nmap <leader>y <Plug>OSCYankOperator
+nmap <leader>yy <leader>c_
+vmap <leader>y <Plug>OSCYankVisual
 
 " 
 
