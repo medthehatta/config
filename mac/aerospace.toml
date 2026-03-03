@@ -20,6 +20,42 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     end tell'
     '''
 
+    alt-shift-enter = '''exec-and-forget osascript -e '
+    tell application "iTerm2"
+        create window with default profile
+        tell current session of current window
+            write text "ssh work -t -- tmux new -A -s 0; exit"
+        end tell
+    end tell'
+    '''
+
+    # Opens a new firefox window, waits for it to gain focus, then moves it to
+    # the current workspace.  Thanks ChatGPT
+    alt-p = [
+      '''exec-and-forget
+    ws="$(aerospace list-workspaces --focused | head -n1)"
+
+    # Focused window id before (may fail if nothing focused)
+    old_id="$(aerospace list-windows --focused --format "%{window-id}" 2>/dev/null || true)"
+
+    # Force a *new* Firefox window
+    open -na "Firefox" --args --new-window
+
+    # Wait until the focused window is Firefox *and* it isn't the old focused id
+    for _ in $(seq 1 60); do
+      new_id="$(aerospace list-windows --focused --format "%{window-id}" 2>/dev/null || true)"
+      new_app="$(aerospace list-windows --focused --format "%{app-bundle-id}" 2>/dev/null || true)"
+
+      if [ -n "$new_id" ] && [ "$new_id" != "$old_id" ] && [ "$new_app" = "org.mozilla.firefox" ]; then
+        aerospace move-node-to-workspace --window-id "$new_id" --focus-follows-window "$ws"
+        exit 0
+      fi
+
+      sleep 0.05
+    done
+    '''
+    ]
+
     alt-m = 'workspace-back-and-forth'
     alt-shift-n = 'focus-monitor --wrap-around next'
     alt-shift-b = 'focus-monitor --wrap-around prev'
@@ -65,6 +101,15 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     alt-t = 'exec-and-forget ~/deploy/scratch/aeroname select'
     alt-shift-t = 'exec-and-forget ~/deploy/scratch/aeroname move-node'
     alt-shift-r = 'exec-and-forget ~/deploy/scratch/aeroname move-all'
+
+    alt-y = '''exec-and-forget osascript -e '
+    tell application "iTerm2"
+        create window with default profile
+        tell current session of current window
+            write text "~/launchable/_launch ; exit"
+        end tell
+    end tell'
+    '''
 
     cmd-h = [] # Disable "hide application"
 
